@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<h3>Pratos</h3>
+<table cellpadding="2" cellspacing="2" border="1">
+    <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Preço</th>
+        <th>Comprar</th>
+    </tr>
+    <tr th:each="prato : ${pratos}">
+        <td th:text="${prato.id}"></td>
+        <td th:text="${prato.nome}"></td>
+        <td th:text="${prato.preco}"></td>
+        <td><a th:href="${'/encarte/comprar/' + prato.id}">Comprar</a></td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<h3>Encarte</h3>
+<table cellpadding="2" cellspacing="2" border="1">
+    <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Preço</th>
+        <th>Quantidade</th>
+        <th>Sub Total</th>
+    </tr>
+    <tr th:each="item : ${session.encarte}">
+        <td th:text="${item.id}"></td>
+        <td th:text="${item.nome}"></td>
+        <td th:text="${item.preco}"></td>
+        <td th:text="${item.qtd}"></td>
+        <td th:text="${item.preco * item.qtd}"></td>
+    </tr>
+</table>
+</body>
+</html>
