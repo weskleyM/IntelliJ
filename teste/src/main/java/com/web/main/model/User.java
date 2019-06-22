@@ -18,31 +18,31 @@ public class User {
 	@Column(name = "auth_user_id")
 	private int id;
 
-	@NotNull(message="First name is compulsory")
+	@NotNull(message="Campo nome é obrigátorio")
 	@Column(name = "nome")
 	private String nome;
 
-	@NotNull(message="First name is compulsory")
+	@NotNull(message="Campo cpf é obrigátorio")
 	@Column(name = "cpf")
 	private Long cpf;
 
-	@NotNull(message="First name is compulsory")
+	@NotNull(message="Campo nascimento é obrigátorio")
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
 	@Column(name = "nasc")
 	private Date nasc;
 
-	@NotNull(message="Last name is compulsory")
+	@NotNull(message="Campo endereço é obrigátorio")
 	@Column(name = "end")
 	private String end;
 
-	@NotNull(message="Email is compulsory")
-	@Email(message = "Email is invalid")
+	@NotNull(message="Campo email é obrigátorio")
+	@Email(message = "Email inválido")
 	@Column(name = "email")
 	private String email;
 
-	@NotNull(message="Password is compulsory")
-	@Length(min=5, message="Password should be at least 5 characters")
+	@NotNull(message="Campo senha é obrigátorio")
+	@Length(min=5, message="Mínimo de 5 dígitos")
 	@Column(name = "senha")
 	private String senha;
 
