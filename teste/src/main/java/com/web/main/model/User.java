@@ -42,7 +42,7 @@ public class User {
 	private String email;
 
 	@NotNull(message="Campo senha é obrigátorio")
-	@Length(min=5, message="Mínimo de 5 dígitos")
+	@Length(min=5, message="Senha: mínimo de 5 dígitos")
 	@Column(name = "senha")
 	private String senha;
 
