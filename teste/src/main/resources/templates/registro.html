@@ -4,18 +4,11 @@
     <title>Registration Form</title>
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="/css/bootstrap.min.css"/>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/jquery-3.3.1.min.js"></script>
-    <script src="/js/jquery.mask.min.js"></script>
-    <script src="/js/jquery-ui.min.js"></script>
-    <script src="/js/script.js"></script>
 </head>
 <body style="background-color: #ededed;">
 <div style="background-color: #337ab7; height: 50px;"></div>
 <div class="container-fluid" style="margin-top: 30px;">
-
-    <div class="row col-lg-4 col-lg-offset-4"
-         style="margin-top: 40px; background-color: #fff; padding: 20px; border: solid 1px #ddd;">
+    <div class="row col-lg-4 col-lg-offset-4" style="margin-top: 40px; background-color: #fff; padding: 20px; border: solid 1px #ddd;">
         <form autocomplete="off" action="#" th:action="@{/registro}" th:object="${user}" method="post" class="form-signin" role="form">
             <h3 class="form-signin-heading">Registration Form</h3>
             <div class="form-group">
@@ -63,5 +56,10 @@
         </form>
     </div>
 </div>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/js/jquery.mask.min.js"></script>
+<script src="/js/jquery-ui.min.js"></script>
+<script src="/js/script.js"></script>
 </body>
 </html>
