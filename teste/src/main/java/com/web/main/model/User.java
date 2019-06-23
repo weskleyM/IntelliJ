@@ -24,7 +24,7 @@ public class User {
 
 	@NotNull(message="Campo cpf é obrigátorio")
 	@Column(name = "cpf")
-	private Long cpf;
+	private String cpf;
 
 	@NotNull(message="Campo nascimento é obrigátorio")
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
@@ -69,11 +69,11 @@ public class User {
 		this.nome = nome;
 	}
 
-	public Long getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(Long cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 

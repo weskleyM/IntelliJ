@@ -26,12 +26,12 @@ public class UserController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	@RequestMapping(value = "/registro", method = RequestMethod.GET)
 	public ModelAndView register() {
 		ModelAndView modelAndView = new ModelAndView();
 		User user = new User();
 		modelAndView.addObject("user", user);
-		modelAndView.setViewName("register"); // resources/template/register.html
+		modelAndView.setViewName("registro"); // resources/template/registro.html
 		return modelAndView;
 	}
 
@@ -49,24 +49,24 @@ public class UserController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value="/register", method=RequestMethod.POST)
+	@RequestMapping(value="/registro", method=RequestMethod.POST)
 	public ModelAndView registerUser(@Valid User user, BindingResult bindingResult, ModelMap modelMap) {
 		ModelAndView modelAndView = new ModelAndView();
 		// Check for the validations
 		if(bindingResult.hasErrors()) {
-			modelAndView.addObject("successMessage", "Please correct the errors in form!");
+			modelAndView.addObject("msg", "Please correct the errors in form!");
 			modelMap.addAttribute("bindingResult", bindingResult);
 		}
 		else if(userService.isUserAlreadyPresent(user)){
-			modelAndView.addObject("successMessage", "user already exists!");			
+			modelAndView.addObject("msg", "user already exists!");
 		}
 		// we will save the user if, no binding errors
 		else {
 			userService.saveUser(user);
-			modelAndView.addObject("successMessage", "User is registered successfully!");
+			modelAndView.addObject("msg", "User is registered successfully!");
 		}
 		modelAndView.addObject("user", new User());
-		modelAndView.setViewName("register");
+		modelAndView.setViewName("registro");
 		return modelAndView;
 	}
 }

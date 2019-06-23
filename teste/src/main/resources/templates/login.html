@@ -10,16 +10,16 @@
 <div class="container-fluid">
     <div class="row col-lg-4 col-lg-offset-4"
          style="margin-top: 80px;background-color:#fff;padding:20px;border:solid 1px #ddd;">
-        <form th:action="@{/login}" method="POST" class="form-signin">
+        <form th:action="@{/login}" method="post" class="form-signin">
             <h3 class="form-signin-heading" th:text="Login"></h3> <br/>
             <input type="text" id="email" name="email" th:placeholder="Email" class="form-control"/> <br/>
-            <input type="password" th:placeholder="Password" id="password" name="password" class="form-control"/> <br/>
-                <div align="center" th:if="${param.error}" class="alert alert-danger">
+            <input type="password" id="senha" name="senha" th:placeholder="Senha" class="form-control"/> <br/>
+                <div align="center" th:if="${param.error}">
                     <p style="font-size: 20; color: #FF1C19;">Email ou Senha Inválido.</p>
                 </div>
             <button class="btn btn-lg btn-primary" name="Submit" value="Login" type="Submit" th:text="Login"
                     style="margin-right:10px;"></button>
-            <a href="/register">Cadastre-se</a>
+            <a href="/registro">Cadastre-se</a>
         </form>
     </div>
 </div>
