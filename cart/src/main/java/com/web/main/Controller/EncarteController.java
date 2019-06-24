@@ -21,7 +21,7 @@ public class EncarteController {
     @Autowired
     private PratoService pratoService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String index() {
         return "encarte/index";
     }
@@ -35,6 +35,6 @@ public class EncarteController {
         } else {
 
         }
-        return "redirect:../../encarte";
+        return "redirect:/encarte/index";
     }
 }

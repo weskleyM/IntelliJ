@@ -5,6 +5,14 @@ public class Item {
     private Prato prato;
     private int qtd;
 
+    public Item() {
+    }
+    
+    public Item(Prato prato, int qtd) {
+        this.prato = prato;
+        this.qtd = qtd;
+    }    
+
     public Prato getPrato() {
         return prato;
     }
@@ -20,14 +28,5 @@ public class Item {
     public void setQtd(int qtd) {
         this.qtd = qtd;
     }
-
-    public Item(Prato prato, int qtd) {
-        super();
-        this.prato = prato;
-        this.qtd = qtd;
-    }
-
-    public Item() {
-        super();
-    }
+    
 }

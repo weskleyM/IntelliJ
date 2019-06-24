@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Adicionar Prato</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    </head>
+    <body>
+        <div align="center" class="container">
+            <form action="#" th:action="@{salva}" th:object="${prato}" method="post" enctype="multipart/form-data">
+                <table border="1">
+                    <tr>
+                        <td><input type="text" th:field="*{pnome}" th:placeholder="Nome"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" th:field="*{preco}" th:placeholder="Preço"></td>
+                    </tr>
+                    <tr>
+                        <td>Imagem</td>
+                        <td><input type="file" name="imagem"></td>
+                    </tr>
+                </table>
+                <input type="submit" value="Salvar">
+            </form>
+        </div>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/jquery-3.3.1.min.js"></script>
+        <script src="../js/jquery.mask.min.js"></script>
+        <script src="../js/jquery-ui.min.js"></script>
+        <script src="../js/script.js"></script>
+    </body>
+</html>

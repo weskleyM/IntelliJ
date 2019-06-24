@@ -15,11 +15,11 @@
         <th>Sub Total</th>
     </tr>
     <tr th:each="item : ${session.encarte}">
-        <td th:text="${item.id}"></td>
-        <td th:text="${item.nome}"></td>
-        <td th:text="${item.preco}"></td>
+        <td th:text="${item.prato.id}"></td>
+        <td th:text="${item.prato.nome}"></td>
+        <td th:text="${item.prato.preco}"></td>
         <td th:text="${item.qtd}"></td>
-        <td th:text="${item.preco * item.qtd}"></td>
+        <td th:text="${item.prato.preco * item.qtd}"></td>
     </tr>
 </table>
 </body>

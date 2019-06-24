@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Pratos</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    </head>
+    <body>
+        <div align="center" class="container">
+            <h3>Pratos</h3>
+            <a th:href="@{novo}">Adicionar Prato</a>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Cód.</th>                    
+                        <th>Nome</th>                    
+                        <th>Preço</th>                   
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="prato : ${pratos}">
+                        <td th:text="${prato.id}"></td>
+                        <td th:text="${prato.pnome}"></td>
+                        <td th:text="${prato.preco}"></td>                        
+                        <td>
+                            <a th:href="@{'edite/' + ${prato.id}}">Editar</a>
+                            &nbsp;
+                            <a th:href="@{'delete/' + ${prato.id}}">Deletar</a>
+                        </td>
+                        <td>
+                            <img width="150" height="150" th:src="@{'/images/' + ${prato.pnome}} + '.png'">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/jquery-3.3.1.min.js"></script>
+        <script src="../js/jquery.mask.min.js"></script>
+        <script src="../js/jquery-ui.min.js"></script>
+        <script src="../js/script.js"></script>
+    </body>
+</html>
