@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.Set;
@@ -18,31 +19,31 @@ public class User {
     @Column(name = "auth_user_id")
     private int id;
 
-    @NotNull(message="Campo nome é obrigátorio")
+    @NotBlank(message = "Nome necessario")
     @Column(name = "nome")
     private String nome;
 
-    @NotNull(message="Campo cpf é obrigátorio")
+    @NotBlank(message = "CPF necessario")
     @Column(name = "cpf")
     private String cpf;
 
-    @NotNull(message="Campo nascimento é obrigátorio")
+    @NotNull(message = "Nasc necessario")
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Temporal(TemporalType.DATE)
     @Column(name = "nasc")
     private Date nasc;
 
-    @NotNull(message="Campo endereço é obrigátorio")
+    @NotBlank(message = "End necessario")
     @Column(name = "end")
     private String end;
 
-    @NotNull(message="Campo email é obrigátorio")
-    @Email(message = "Email inválido")
+    @NotBlank(message = "Email necessario")
+    @Email
     @Column(name = "email")
     private String email;
 
-    @NotNull(message="Campo senha é obrigátorio")
-    @Length(min=5, message="Senha: mínimo de 5 dígitos")
+    @NotBlank(message = "Senha necessario")
+    @Length(min=5,message = "Senha minima de 5 digitos")
     @Column(name = "senha")
     private String senha;
 
