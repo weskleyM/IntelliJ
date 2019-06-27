@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/cadastrar").permitAll()
-                .antMatchers("/encarte").permitAll()
+                .antMatchers("/carrinho").permitAll()
                 .antMatchers("/usuario/**").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
                 .antMatchers("/gerente/**").hasAnyAuthority("ROLE_ADMIN").anyRequest().authenticated()
                 // form login

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+</head>
+<body>
+<table class="highlight">
+    <thead>
+    <tr>
+        <th>N° do pedido</th>
+        <th>Itens</th>
+        <th>Endereço de entrega</th>
+        <th>Total</th>
+    </tr>
+    </thead>
+
+    <th:block th:if="${pedidosCliente == null}">
+        <tbody>
+        <tr>
+            <td colspan="4"> Vazio </td>
+        </tr>
+        </tbody>
+    </th:block>
+
+    <th:block th:unless="${pedidosCliente == null}">
+
+        <tbody th:each="pedido : ${pedidosCliente}">
+
+        <tr>
+            <td><span th:text="${pedido.id}"></span></td>
+            <td><a th:href="@{'#modal'+${pedido.id}}" > <i>Pedido</i>
+            </a></td>
+            <td><span th:text="${pedido.cliente.endereco}"></span></td>
+            <td><span th:text="${' R$ '+pedido.total}"></span></td>
+        </tr>
+
+        <div th:id="'modal'+${pedido.id}">
+
+                <h4>Itens do pedido</h4>
+                <th:block th:each="item : ${pedido.itens}">
+                    <span th:text="${item.qtd+'X - '}"></span>
+                    <span th:text="${item.prato.nome}"></span>
+                    <b><span th:text="' R$'+${item.valor}"></span></b><br>
+                </th:block>
+
+
+                <a href="#!">Fechar</a>
+
+        </div>
+
+        </tbody>
+
+    </th:block>
+
+</table>
+
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/js/jquery.mask.min.js"></script>
+<script src="/js/jquery-ui.min.js"></script>
+<script src="/js/script.js"></script>
+</body>
+</html>

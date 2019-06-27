@@ -18,7 +18,12 @@ public class IndexController {
     @Autowired
     private PratoService pratoService;
 
-
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public ModelAndView home() {
+        ModelAndView mv = new ModelAndView("home");
+        mv.addObject("pratos", pratoService.findStatusActive());
+        return mv;
+    }
 
     @RequestMapping(value = { "/login" }, method = RequestMethod.GET)
     public ModelAndView login() {

@@ -18,7 +18,7 @@ public class PedidoService {
         pedidoRepository.save(pedido);
     }
 
-    public List<Pedido> findByCliente(Usuario usuario) {
+    public List<Pedido> findByUsuario(Usuario usuario) {
         return pedidoRepository.findByUsuarioOrderByDataPedidoDesc(usuario);
     }
 

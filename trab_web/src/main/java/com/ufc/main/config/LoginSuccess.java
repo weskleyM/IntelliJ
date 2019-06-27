@@ -43,7 +43,7 @@ public class LoginSuccess extends SimpleUrlAuthenticationSuccessHandler {
         if (roles.contains("ROLE_ADMIN")) {
             url = "/gerente";
         } else if (roles.contains("ROLE_USER")) {
-            url = "/encarte";
+            url = "/carrinho/index";
         }
         return url;
     }

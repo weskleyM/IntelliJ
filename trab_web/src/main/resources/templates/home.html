@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+</head>
+<body>
+<h1>Lista de Pratos</h1>
+<div th:each="prato : ${pratos}">
+    <div class="col s12 m6 14">
+        <img th:src="@{'/images/'+${prato.nome}+'.png'}" class="materialbox responsive-img card">
+        <div>
+            <p>Prato: <span th:text="${prato.nome}"></span></p>
+            <p>Preço: <span th:text="${prato.preco}"></span></p>
+        </div>
+        <a sec:authorize="hasRole('USER')" th:href="@{/carrinho/add/{id}(id = ${prato.id})}"
+           class="col s12 waves-effect waves-light btn">
+            Adicionar
+        </a>
+
+        <a sec:authorize="!hasAnyRole('USER','ADMIN')" th:href="@{/login}" class="col s12 waves-effect waves-light btn">
+            Adicionar
+        </a>
+    </div>
+</div>
+
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/js/jquery.mask.min.js"></script>
+<script src="/js/jquery-ui.min.js"></script>
+<script src="/js/script.js"></script>
+</body>
+</html>

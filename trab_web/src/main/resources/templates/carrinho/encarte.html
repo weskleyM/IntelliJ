@@ -6,6 +6,43 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css"/>
 </head>
 <body>
+<span class="card-title">Carrinho
+    <a th:unless="${session.carrinho == null}" th:href="@{/}"> continue comprando </a>
+    <a th:if="${session.carrinho == null}" th:href="@{/}">Adicionar</a></span>
+<th:block th:unless="${session.carrinho == null}">
 
+    <tbody th:each="item : ${session.carrinho}">
+
+    <form method="post">
+
+        <tr>
+            <td><span th:text="${item.prato.nome}"></span></td>
+            <td id="inputNumber"><input type="number" min="1" name="qtdItem" th:value="${item.qtd}"></td>
+            <td><span th:text="${item.prato.preco * item.qtd}"></span></td>
+            <td>
+                <button class="btn waves-effect waves-light red darken-1" type="submit" name="action">Atualizar</button>
+                <a th:href="@{/carrinho/remove/{id}(id = ${item.prato.id})}" class="waves-effect waves-light btn">Excluir</a>
+            </td>
+        </tr>
+
+        <input type="hidden" name="id" th:value="${item.prato.getId()}">
+
+    </form>
+
+    </tbody>
+
+</th:block>
+
+<th:block th:if="${session.carrinho == null}">
+    <h1> Vazio </h1>
+</th:block>
+
+</table>
+<p><b><span th:text="${session.total == null ? '' : 'Total: R$ ' + session.total}"></span></b>
+</p>
+<th:block th:unless="${session.carrinho == null}">
+    <a th:href="@{/pedido/finalizar}" class="waves-effect waves-light btn"> Finalizar pedido </a>
+</th:block>
+<script src="/js/bootstrap.min.js"> </script>
 </body>
 </html>

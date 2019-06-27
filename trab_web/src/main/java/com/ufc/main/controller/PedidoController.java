@@ -14,48 +14,53 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping("usuario")
-public class UsuarioController {
-
-    @Autowired
-    private UsuarioService usuarioService;
+@RequestMapping("/pedido")
+public class PedidoController {
 
     @Autowired
     private PedidoService pedidoService;
 
     @Autowired
+    private UsuarioService usuarioService;
+
+    @Autowired
     private ItemService itemService;
 
-    @RequestMapping(value = "/pedidos", method = RequestMethod.GET)
-    public ModelAndView listarPedidosDoCliente() {
+    @RequestMapping(value = "/finalizar", method = RequestMethod.GET)
+    public ModelAndView finalizar(HttpSession session) {
 
-        ModelAndView mv = new ModelAndView("usuarios/listarPedidos");
+        ModelAndView mv = new ModelAndView("redirect:/usuario/pedidos");
 
         Object auth = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         UserDetails user = (UserDetails) auth;
 
         Usuario usuario = usuarioService.findByEmail(user.getUsername());
 
-        List<Pedido> pedidosCliente = pedidoService.findByUsuario(usuario);
+        Pedido pedido = new Pedido();
+        pedido.setUsuario(usuario);
 
-        for (Pedido p : pedidosCliente) {
+        pedido.setTotal(Double.valueOf(0));
+        pedidoService.savePedido(pedido);
 
-            List<Item> itens = new ArrayList<>();
+        Iterable<Item> carrinho = (Iterable<Item>) session.getAttribute("carrinho");
 
-            itens = itemService.findByPedido(p);
-            p.setItens(itens);
-
+        for (Item item : carrinho) {
+            item.setPedido(pedido);
         }
 
-        if (pedidosCliente.size() == 0) {
-            mv.addObject("pedidosCliente", null);
-        } else {
-            mv.addObject("pedidosCliente", pedidosCliente);
-        }
+        itemService.saveItens(carrinho);
+
+        Double total = (Double) session.getAttribute("total");
+
+        pedido.setTotal(Double.valueOf(total));
+
+        pedidoService.savePedido(pedido);
+
+        session.removeAttribute("carrinho");
+        session.removeAttribute("total");
 
         return mv;
     }
