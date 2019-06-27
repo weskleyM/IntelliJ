@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Pratos</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+</head>
+<body>
+<div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark col-sm-6">
+        <label class="navbar-brand">Pratos</label>
+        <div class="collapse navbar-collapse col-sm-9">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" th:href="@{novo}">Adicionar Prato</a>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse col-sm-1">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" th:href="@{../logout}">Logout</a>
+            </div>
+        </div>
+    </nav>
+    <table class="table table-hover col-sm-6">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Cód.</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Preço</th>
+            <th scope="col" colspan="2">Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="prato : ${pratos}">
+            <th scope="row" th:text="${prato.id}"></th>
+            <td th:text="${prato.nome}"></td>
+            <td th:text="${prato.preco}"></td>
+            <td><a th:href="@{'edite/' + ${prato.id}}">
+                <button class="btn btn-outline-primary" type="button">Editar</button>
+            </a> &nbsp; <a
+                    th:href="@{'delete/' + ${prato.id}}">
+                <button class="btn btn-outline-danger" type="button">Deletar</button>
+            </a></td>
+            <td><img width="150" height="150" th:src="@{'/images/' + ${prato.nome}} + '.png'"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script src="../js/jquery.mask.min.js"></script>
+<script src="../js/jquery-ui.min.js"></script>
+<script src="../js/script.js"></script>
+</body>
+</html>
